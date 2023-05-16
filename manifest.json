@@ -1,1 +1,16 @@
+{
+    "name": "Screen Capture",
+    "description": "Build an Extension!",
+    "version": "1.0",
+    "manifest_version": 3,
+    "background": {
+      "service_worker": "script/capture.js"
+    },
 
+    "action": {
+      "default_popup": "popup/popup.html",
+      "default_icon": "icons/icon-screenshot.png"
+    },
+
+    "options_page": "options/options.html"
+}
