@@ -4,7 +4,7 @@
     "version": "1.0",
     "manifest_version": 3,
     "background": {
-      "service_worker": "script/capture.js"
+      "service_worker": "background.js"
     },
 
     "action": {
