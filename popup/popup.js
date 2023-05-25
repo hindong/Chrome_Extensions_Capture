@@ -8,3 +8,8 @@ const option_button = document.getElementById('option');
 option_button.addEventListener('click',() =>{
     chrome.tabs.create({url: 'options/options.html'});
 });
+
+
+capture_button.addEventListener('click', () => {
+
+});
