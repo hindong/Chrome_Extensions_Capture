@@ -22,4 +22,4 @@ window.onload = () => {
       });
       window.requestAnimationFrame(loop);
     })();
-  };
+};
