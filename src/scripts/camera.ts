@@ -1,15 +1,35 @@
-export class Camera{
+class Camera{
     private link: HTMLAnchorElement;
+    private static instance: Camera;
 
-    constructor() {
+    private constructor() {
         this.link = document.createElement("a");
     }
 
-    screenShot() {}
-    fullScreenShot() {}
-    videoShot() {}
+    public static getInstance(): Camera{
+        if(!Camera.instance){
+            Camera.instance = new Camera();
+        }
+        return Camera.instance;
+    }
+
+    public screenShot() {}
+    public videoShot() {}
+
+    public screenShotFull(formatInfo:string): void {
+        chrome.tabs.captureVisibleTab(null, { format: formatInfo }, dataUrl => {
+        if (chrome.runtime.lastError) {
+          console.error(chrome.runtime.lastError);
+          return;
+        }
+        
+        // test
+        console.log("Captured image data URL:", dataUrl);
+        this.downloadImage(dataUrl, "captured_image.png");
+      });
+    }
     
-    downloadImage(dataUrl: string, filename: string): void{
+    private downloadImage(dataUrl: string, filename: string): void{
         this.link.href = dataUrl;
         this.link.download = filename;
         this.link.click();
