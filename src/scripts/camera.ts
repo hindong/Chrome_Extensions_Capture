@@ -1,4 +1,4 @@
-class Camera{
+export class Camera{
     private link: HTMLAnchorElement;
     private static instance: Camera;
 
@@ -23,7 +23,6 @@ class Camera{
           return;
         }
         
-        // test
         console.log("Captured image data URL:", dataUrl);
         this.downloadImage(dataUrl, "captured_image.png");
       });

@@ -20,7 +20,6 @@ export var Camera = /** @class */ (function () {
                 console.error(chrome.runtime.lastError);
                 return;
             }
-            // test
             console.log("Captured image data URL:", dataUrl);
             _this.downloadImage(dataUrl, "captured_image.png");
         });
