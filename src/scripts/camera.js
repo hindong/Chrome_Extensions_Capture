@@ -1,6 +1,5 @@
 "use strict";
-// exports.__esModule = true;
-// exports.Camera = void 0;
+
 export var Camera = /** @class */ (function () {
     function Camera() {
         this.link = document.createElement("a");
@@ -11,8 +10,26 @@ export var Camera = /** @class */ (function () {
         }
         return Camera.instance;
     };
-    Camera.prototype.screenShot = function () { };
     Camera.prototype.videoShot = function () { };
+    Camera.prototype.screenShot = function () {
+        // popup.html 창을 닫아준다.
+        window.close();
+        // document.body.style.cursor = "cell";
+        
+
+        chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+            const currentTabId = tabs[0].id;
+            chrome.scripting.executeScript(
+                {
+                    target: { tabId: currentTabId },
+                    function: () => {document.body.style.cursor = "cell";
+                    console.log("data test");
+                }
+                },
+            );
+          });
+
+    };
     Camera.prototype.screenShotFull = function (formatInfo) {
         var _this = this;
         chrome.tabs.captureVisibleTab(null, { format: formatInfo }, function (dataUrl) {

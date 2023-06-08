@@ -1,3 +1,5 @@
+import html2canvas from 'html2canvas';
+
 export class Camera{
     private link: HTMLAnchorElement;
     private static instance: Camera;
@@ -13,8 +15,23 @@ export class Camera{
         return Camera.instance;
     }
 
-    public screenShot() {}
+
     public videoShot() {}
+
+    public screenShot() {
+        // popup.html 창을 닫아준다.
+        window.close();
+        
+        // document.body.style.cursor = "cell";
+        // chrome.scripting.executeScript(
+        //     {
+        //         target: { tabId: 1 },
+        //         function: test
+        //     },
+        // );
+
+    }
+
 
     public screenShotFull(formatInfo:string): void {
         chrome.tabs.captureVisibleTab(null, { format: formatInfo }, dataUrl => {
@@ -35,3 +52,4 @@ export class Camera{
     }
 }
 //
+
