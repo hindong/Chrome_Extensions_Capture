@@ -1,4 +1,4 @@
-import {Camera} from '../scripts/Camera.js';
+import {Camera} from '../scripts/camera.js';
 
 const capture_button = document.getElementById('capture');
 const captureAll_button = document.getElementById('capture_all');
@@ -14,7 +14,7 @@ option_button.addEventListener('click',() =>{
 
 
 capture_button.addEventListener('click', () => {
-    //..
+    camera.screenShot();
 });
 
 

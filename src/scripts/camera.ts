@@ -21,16 +21,27 @@ export class Camera{
     public screenShot() {
         // popup.html 창을 닫아준다.
         window.close();
-        
-        // document.body.style.cursor = "cell";
-        // chrome.scripting.executeScript(
-        //     {
-        //         target: { tabId: 1 },
-        //         function: test
-        //     },
-        // );
+
+        chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+            let currentTabInfo = tabs[0];
+            
+            if (!currentTabInfo.url.startsWith('chrome://')) {
+                
+                // chrome.tabs.sendMessage(tabs[0].id, { action: 'screenShot' });
+
+                chrome.scripting.executeScript({
+                    target: { tabId: currentTabInfo.id },
+                    func: () => {
+                      document.body.style.cursor = "cell";
+                      document.title = "New Page Title";
+                    }
+                  });
+            }
+        });
+
 
     }
+
 
 
     public screenShotFull(formatInfo:string): void {
@@ -49,6 +60,14 @@ export class Camera{
         this.link.href = dataUrl;
         this.link.download = filename;
         this.link.click();
+    }
+
+
+    //////////////////////////////////////////////////
+    //////////////////////////////////////////////////
+
+    public changeCursor() {
+        document.body.style.cursor = "cell";
     }
 }
 //
