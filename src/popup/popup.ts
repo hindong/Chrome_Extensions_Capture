@@ -1,4 +1,4 @@
-import {Camera} from '../scripts/Camera';
+import {Camera} from '../scripts/camera';
 
 const capture_button = document.getElementById('capture');
 const captureAll_button = document.getElementById('capture_all');
