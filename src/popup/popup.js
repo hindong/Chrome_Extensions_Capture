@@ -25,3 +25,8 @@ captureAll_button.addEventListener('click', () => {
 
 
 
+<<<<<<< Updated upstream:src/popup/popup.js
+=======
+});
+
+>>>>>>> Stashed changes:popup/popup.js

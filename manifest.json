@@ -12,5 +12,13 @@
       "default_icon": "icons/icon-screenshot.png"
     },
 
+<<<<<<< Updated upstream
     "options_page": "./src/options/options.html"
+=======
+    "content_scripts": {
+      "js": ["scripts/content.js"]
+    },
+
+    "options_page": "options/options.html"
+>>>>>>> Stashed changes
 }
