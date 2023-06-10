@@ -14,7 +14,7 @@ option_button.addEventListener('click',() =>{
 
 
 capture_button.addEventListener('click', () => {
-    //..
+    camera.screenShot();
 });
 
 
