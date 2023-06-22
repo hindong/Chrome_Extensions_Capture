@@ -25,23 +25,21 @@ export class Camera{
         chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
             let currentTabInfo = tabs[0];
             
+            // chrome 권한이 필요한 url에서 실행하는게 아니라면 실행한다.
             if (!currentTabInfo.url.startsWith('chrome://')) {
                 
-                // chrome.tabs.sendMessage(tabs[0].id, { action: 'screenShot' });
-
+                // 현재 tab에서 해당 스크립트를 실행합니다.
                 chrome.scripting.executeScript({
                     target: { tabId: currentTabInfo.id },
-                    func: () => {
-                      document.body.style.cursor = "cell";
-                      document.title = "New Page Title";
-                    }
-                  });
+                    // func: () => {
+                    //     document.body.style.cursor = "cell";
+                    //     document.title = "New Page Title";
+                    // }
+                    files: ["/src/scripts/capture.js"],
+                });
             }
         });
-
-
     }
-
 
 
     public screenShotFull(formatInfo:string): void {
@@ -61,7 +59,6 @@ export class Camera{
         this.link.download = filename;
         this.link.click();
     }
-
 
     //////////////////////////////////////////////////
     //////////////////////////////////////////////////

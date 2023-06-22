@@ -17,14 +17,16 @@ export var Camera = /** @class */ (function () {
         window.close();
         chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
             var currentTabInfo = tabs[0];
+            // chrome 권한이 필요한 url에서 실행하는게 아니라면 실행한다.
             if (!currentTabInfo.url.startsWith('chrome://')) {
-                // chrome.tabs.sendMessage(tabs[0].id, { action: 'screenShot' });
+                // 현재 tab에서 해당 스크립트를 실행합니다.
                 chrome.scripting.executeScript({
                     target: { tabId: currentTabInfo.id },
-                    func: function () {
-                        document.body.style.cursor = "cell";
-                        document.title = "New Page Title";
-                    }
+                    // func: () => {
+                    //     document.body.style.cursor = "cell";
+                    //     document.title = "New Page Title";
+                    // }
+                    files: ["/src/scripts/capture.js"]
                 });
             }
         });
@@ -44,6 +46,9 @@ export var Camera = /** @class */ (function () {
         this.link.href = dataUrl;
         this.link.download = filename;
         this.link.click();
+    };
+    Camera.prototype.testCode = function () {
+        console.log("TEST");
     };
     //////////////////////////////////////////////////
     //////////////////////////////////////////////////
