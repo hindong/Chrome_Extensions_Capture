@@ -22,11 +22,11 @@ export var Camera = /** @class */ (function () {
                 // 현재 tab에서 해당 스크립트를 실행합니다.
                 chrome.scripting.executeScript({
                     target: { tabId: currentTabInfo.id },
-                    // func: () => {
-                    //     document.body.style.cursor = "cell";
-                    //     document.title = "New Page Title";
-                    // }
-                    files: ["/src/scripts/capture.js"]
+                    func: function () {
+                        document.body.style.cursor = "cell";
+                        document.title = "New Page Title";
+                    }
+                    // files: ["/src/scripts/capture.js"],
                 });
             }
         });
@@ -46,14 +46,6 @@ export var Camera = /** @class */ (function () {
         this.link.href = dataUrl;
         this.link.download = filename;
         this.link.click();
-    };
-    Camera.prototype.testCode = function () {
-        console.log("TEST");
-    };
-    //////////////////////////////////////////////////
-    //////////////////////////////////////////////////
-    Camera.prototype.changeCursor = function () {
-        document.body.style.cursor = "cell";
     };
     return Camera;
 }());

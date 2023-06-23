@@ -31,11 +31,11 @@ export class Camera{
                 // 현재 tab에서 해당 스크립트를 실행합니다.
                 chrome.scripting.executeScript({
                     target: { tabId: currentTabInfo.id },
-                    // func: () => {
-                    //     document.body.style.cursor = "cell";
-                    //     document.title = "New Page Title";
-                    // }
-                    files: ["/src/scripts/capture.js"],
+                    func: () => {
+                        document.body.style.cursor = "cell";
+                        document.title = "New Page Title";
+                    }
+                    // files: ["/src/scripts/capture.js"],
                 });
             }
         });
@@ -60,12 +60,6 @@ export class Camera{
         this.link.click();
     }
 
-    //////////////////////////////////////////////////
-    //////////////////////////////////////////////////
-
-    public changeCursor() {
-        document.body.style.cursor = "cell";
-    }
 }
 //
 
