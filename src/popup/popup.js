@@ -9,7 +9,7 @@ const option_button = document.getElementById('option');
 const camera = Camera.getInstance();
 
 option_button.addEventListener('click',() =>{
-    chrome.tabs.create({url: 'options/options.html'});
+    chrome.tabs.create({url: 'src/options/options.html'});
 });
 
 
