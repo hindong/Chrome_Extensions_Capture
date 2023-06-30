@@ -8,8 +8,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-
-export class Camera {
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Camera = void 0;
+class Camera {
     constructor() {
         this.link = document.createElement("a");
     }
@@ -62,5 +63,5 @@ export class Camera {
         this.link.click();
     }
 }
-
+exports.Camera = Camera;
 //

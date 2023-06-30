@@ -22,21 +22,26 @@ export class Camera{
         // popup.html 창을 닫아준다.
         window.close();
 
-        chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        chrome.tabs.query({ active: true, currentWindow: true },async function (tabs) {
             let currentTabInfo = tabs[0];
             
             // chrome 권한이 필요한 url에서 실행하는게 아니라면 실행한다.
             if (!currentTabInfo.url.startsWith('chrome://')) {
                 
                 // 현재 tab에서 해당 스크립트를 실행합니다.
-                chrome.scripting.executeScript({
-                    target: { tabId: currentTabInfo.id },
-                    func: () => {
-                        document.body.style.cursor = "cell";
-                        document.title = "New Page Title";
-                    }
-                    // files: ["/src/scripts/capture.js"],
-                });
+                try{
+                    await chrome.scripting.executeScript({
+                        target: { tabId: currentTabInfo.id },
+                        func: () => {
+                            document.body.style.cursor = "cell";
+                            document.title = "New Page Title";
+                        }
+                        // files: ["/src/scripts/screenshot.js"],
+                    });
+                } catch(err){
+                    console.error(`failed to execute script: ${err}`);
+                }
+                
             }
         });
     }
