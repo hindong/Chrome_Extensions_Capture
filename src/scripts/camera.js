@@ -32,11 +32,11 @@ export class Camera {
                     try {
                         yield chrome.scripting.executeScript({
                             target: { tabId: currentTabInfo.id },
-                            func: () => {
-                                document.body.style.cursor = "cell";
-                                document.title = "New Page Title";
-                            }
-                            // files: ["/src/scripts/screenshot.js"],
+                            // func: () => {
+                            //     document.body.style.cursor = "cell";
+                            //     document.title = "New Page Title";
+                            // }
+                            files: ["/src/scripts/screenshot.js"],
                         });
                     }
                     catch (err) {
