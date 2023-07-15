@@ -3,6 +3,7 @@
 
 ### 기능
 <img src="https://github.com/hindong/Chrome_Extensions_Capture/blob/main/doc/popup.png" width="300" height="300">
+
 #### 전체 캡쳐
 
 #### 부분 캡쳐
