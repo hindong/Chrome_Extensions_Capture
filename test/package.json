@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "@types/chrome": "^0.0.237"
+  },
+  "dependencies": {
+    "@types/html2canvas": "^1.0.0",
+    "html2canvas": "^1.4.1"
+  }
+}
